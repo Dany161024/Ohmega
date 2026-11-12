@@ -19,11 +19,12 @@ done
 lipo -create -output "$BUILD/Ohmega" "$BUILD/Ohmega-x86_64" "$BUILD/Ohmega-arm64"
 
 echo "== icon"
+# AppIcon.png = ohmega.png on the macOS icon grid (make_icon.py), so it is as big as the other apps
 ICONSET="$BUILD/Ohmega.iconset"
 mkdir -p "$ICONSET"
 for size in 16 32 128 256 512; do
-    sips -z $size $size ../ohmega.png --out "$ICONSET/icon_${size}x${size}.png" >/dev/null
-    sips -z $((size * 2)) $((size * 2)) ../ohmega.png --out "$ICONSET/icon_${size}x${size}@2x.png" >/dev/null
+    sips -z $size $size AppIcon.png --out "$ICONSET/icon_${size}x${size}.png" >/dev/null
+    sips -z $((size * 2)) $((size * 2)) AppIcon.png --out "$ICONSET/icon_${size}x${size}@2x.png" >/dev/null
 done
 iconutil -c icns "$ICONSET" -o "$BUILD/Ohmega.icns"
 

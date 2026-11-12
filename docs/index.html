@@ -227,13 +227,13 @@
       <div>
         <p class="lead">Ohmega measures how loud each song really is and writes the fix straight into the audio file. No ReplayGain tags, no player settings — it plays right in every app, on every device.</p>
         <div class="cta">
-          <a class="btn btn-primary" id="hero-download" href="https://ohmega.is-my.app/download/ohmega-1.3.0.flatpak" download>
+          <a class="btn btn-primary" href="#download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
-            <span>Download for Linux</span>
+            Download
           </a>
           <a class="btn btn-ghost" href="#how">How it works</a>
         </div>
-        <p class="fine" id="hero-fine">Version 1.3.0 · Flatpak · 61 MB · <a href="#download">other downloads</a></p>
+        <p class="fine">Version 1.3.0 · Linux &amp; macOS · Windows coming soon</p>
       </div>
       <figure class="player">
         <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/demo-poster.jpg" width="1600" height="1000" aria-label="Ohmega demo: seven tracks between −6.7 and −27 LUFS are scanned and normalized to −14 LUFS">
@@ -462,14 +462,6 @@
     v.play();
   });
   big.addEventListener("close", function () { big.querySelector("video").pause(); if (!hero.controls) hero.play(); });
-
-  // on a Mac the main button downloads the Mac app
-  if (/Macintosh|Mac OS X/.test(navigator.userAgent) && !/iPhone|iPad/.test(navigator.userAgent)) {
-    var dl = document.getElementById("hero-download");
-    dl.href = "https://ohmega.is-my.app/download/Ohmega-1.3.0-macOS.dmg";
-    dl.querySelector("span").textContent = "Download for macOS";
-    document.getElementById("hero-fine").innerHTML = 'Version 1.3.0 · macOS 13+ · Intel &amp; Apple Silicon · 34 MB · <a href="#download">other downloads</a>';
-  }
 
   // copy buttons
   document.querySelectorAll(".copy").forEach(function (b) {
