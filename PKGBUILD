@@ -1,10 +1,10 @@
 pkgname=ohmega
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc=Ohmega normalizes the loudness of your audio files using the EBU R128 standard.
 arch=('any')
-url=https://ohmega.dany-rcmodelar.workers.dev/
-license=('MIT')
+url=https://ohmega.is-my.app/
+license=('GPL-3.0-only')
 
 depends=('python' 'python-pyqt6' 'ffmpeg')
 

@@ -1,5 +1,5 @@
 Name:           ohmega
-Version:        1.3.0
+Version:        1.3.1
 Release:        1%{?dist}
 Summary:        Normalize audio loudness directly in your files
 License:        GPL-3.0-only
@@ -66,6 +66,10 @@ appstreamcli validate --no-net \
 %{_datadir}/metainfo/io.github.Daniel_v8.Ohmega.metainfo.xml
 
 %changelog
+* Thu Nov 12 2026 Dany161024 <dany.rcmodelar@proton.me> - 1.3.1-1
+- Fix normalizing mono Opus files: re-encode at 256 kbit/s (320 kbit/s is above the libopus limit for one channel)
+- App icon: the waveform is no longer see-through
+
 * Mon Jun 16 2026 Daniel-v8 <dany.rcmodelar@proton.me> - 1.3.0-1
 - Add ohmega-cli: a command-line version with full feature parity (targets, custom LUFS, album mode, recursive folders, backup, dry-run)
 - Adding a folder now normalizes it as one album automatically; loose files stay per-track

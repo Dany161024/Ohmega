@@ -8,7 +8,7 @@ commands, targets, album gain and backups. Universal binary (Intel + Apple Silic
 On a Mac with the Command Line Tools (`xcode-select --install`):
 
 ```sh
-macos/build.sh            # → macos/build/Ohmega.app and Ohmega-1.3.0.dmg
+macos/build.sh            # → macos/build/Ohmega.app and Ohmega-1.3.1.dmg
 macos/build.sh --install  # …and copy it to /Applications
 ```
 

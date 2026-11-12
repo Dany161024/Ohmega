@@ -6,7 +6,7 @@
 # (static build from evermeet.cx, see macos/README.md).
 set -euo pipefail
 cd "$(dirname "$0")"
-VERSION=1.3.0
+VERSION=1.3.1
 BUILD=build
 APP="$BUILD/Ohmega.app"
 rm -rf "$BUILD" && mkdir -p "$BUILD"

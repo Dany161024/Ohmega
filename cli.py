@@ -17,7 +17,7 @@ from ohmega_core import (  # noqa: E402
     collect_audio_files,
 )
 
-VERSION = "1.3.0"
+VERSION = "1.3.1"
 
 PRESETS = {
     "streaming": -14.0,    # Spotify/YouTube/Apple-style

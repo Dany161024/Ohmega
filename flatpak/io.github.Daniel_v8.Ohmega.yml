@@ -69,5 +69,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/Dany161024/Ohmega.git
-        tag: v1.3.0
-        # Re-pin commit to the v1.3.0 tag's SHA before submitting to Flathub
+        tag: v1.3.1
+        # Re-pin commit to the v1.3.1 tag's SHA before submitting to Flathub
