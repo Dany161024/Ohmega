@@ -25,11 +25,12 @@
 
   <launchable type="desktop-id">io.github.Daniel_v8.Ohmega.desktop</launchable>
 
-  <url type="homepage">https://github.com/Daniel-v8/Ohmega</url>
-  <url type="bugtracker">https://github.com/Daniel-v8/Ohmega/issues</url>
+  <url type="homepage">https://ohmega.is-my.app</url>
+  <url type="vcs-browser">https://github.com/Dany161024/Ohmega</url>
+  <url type="bugtracker">https://github.com/Dany161024/Ohmega/issues</url>
 
-  <developer id="io.github.daniel-v8">
-    <name>Daniel-v8</name>
+  <developer id="io.github.dany161024">
+    <name>Dany161024</name>
   </developer>
 
   <provides>
@@ -56,19 +57,19 @@
   <screenshots>
     <screenshot type="default">
       <caption>Normalization done — loudness targets met across all files</caption>
-      <image>https://raw.githubusercontent.com/Daniel-v8/Ohmega/main/docs/screenshots/05-done.png</image>
+      <image>https://raw.githubusercontent.com/Dany161024/Ohmega/main/docs/screenshots/05-done.png</image>
     </screenshot>
     <screenshot>
       <caption>Files loaded and ready to normalize</caption>
-      <image>https://raw.githubusercontent.com/Daniel-v8/Ohmega/main/docs/screenshots/02-loaded.png</image>
+      <image>https://raw.githubusercontent.com/Dany161024/Ohmega/main/docs/screenshots/02-loaded.png</image>
     </screenshot>
     <screenshot>
       <caption>Normalizing audio directly in files</caption>
-      <image>https://raw.githubusercontent.com/Daniel-v8/Ohmega/main/docs/screenshots/03-normalizing.png</image>
+      <image>https://raw.githubusercontent.com/Dany161024/Ohmega/main/docs/screenshots/03-normalizing.png</image>
     </screenshot>
     <screenshot>
       <caption>Main window — empty state</caption>
-      <image>https://raw.githubusercontent.com/Daniel-v8/Ohmega/main/docs/screenshots/01-empty.png</image>
+      <image>https://raw.githubusercontent.com/Dany161024/Ohmega/main/docs/screenshots/01-empty.png</image>
     </screenshot>
   </screenshots>
 

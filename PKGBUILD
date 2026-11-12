@@ -8,7 +8,7 @@ license=('MIT')
 
 depends=('python' 'python-pyqt6' 'ffmpeg')
 
-source=("git+https://github.com/Daniel-v8/Ohmega.git")
+source=("git+https://github.com/Dany161024/Ohmega.git")
 sha256sums=('SKIP')
 
 package() {

@@ -4,7 +4,7 @@ Release:        1%{?dist}
 Summary:        Normalize audio loudness directly in your files
 License:        GPL-3.0-only
 
-URL:            https://github.com/Daniel-v8/Ohmega
+URL:            https://github.com/Dany161024/Ohmega
 Source0:        %{url}/archive/v%{version}/Ohmega-%{version}.tar.gz
 
 BuildArch:      noarch

@@ -68,6 +68,6 @@ modules:
       - install -Dm755 flatpak/loudless-launch.sh /app/bin/loudless
     sources:
       - type: git
-        url: https://github.com/Daniel-v8/Ohmega.git
+        url: https://github.com/Dany161024/Ohmega.git
         tag: v1.3.0
         # Re-pin commit to the v1.3.0 tag's SHA before submitting to Flathub
