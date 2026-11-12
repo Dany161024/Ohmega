@@ -27,7 +27,7 @@ CODEC_MAP = {
     # Lossy — small quality loss on re-encode
     ".mp3":  ["-c:a", "libmp3lame", "-q:a", "0"],
     ".ogg":  ["-c:a", "libvorbis", "-q:a", "10"],
-    ".opus": ["-c:a", "libopus", "-b:a", "320k"],
+    ".opus": ["-c:a", "libopus", "-b:a", "256k"],  # 256k = libopus maximum for mono files
     ".m4a":  ["-c:a", "aac", "-b:a", "320k"],
     ".aac":  ["-c:a", "aac", "-b:a", "320k"],
     ".wma":  ["-c:a", "wmav2", "-b:a", "320k"],
