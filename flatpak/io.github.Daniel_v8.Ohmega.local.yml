@@ -1,6 +1,6 @@
 app-id: io.github.Daniel_v8.Ohmega
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 
 command: loudless
@@ -18,12 +18,12 @@ modules:
       - pip3 install --no-index --find-links="." --prefix=/app PyQt6-sip
     sources:
       - type: file
-        url: https://files.pythonhosted.org/packages/95/cb/116f9b328636765f3bce97d9e10ec041c54bbe92beb0617edb86c2b615c1/pyqt6_sip-13.11.1-cp312-cp312-manylinux1_x86_64.manylinux_2_5_x86_64.whl
-        sha256: 0df15849946cea969d3ff2b24b76149262b6044aea2c5403e4f70c24c973a4c8
+        url: https://files.pythonhosted.org/packages/d4/e3/65b605759859d38231ce7544065d4c61f891eb7766c351318e2a0b08a473/pyqt6_sip-13.11.1-cp313-cp313-manylinux1_x86_64.manylinux_2_5_x86_64.whl
+        sha256: a72f4ebdab16a8a484019ff593de90d8013d3286b678c6ba1c0bdb117f4fcb13
         only-arches: [x86_64]
       - type: file
-        url: https://files.pythonhosted.org/packages/1b/be/fe2321285e8f683e705d199dbb458131f1850dc5966155a19c40100c85bb/pyqt6_sip-13.11.1-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-        sha256: c52b2b27fc77d9447a8dc1c6de1aaccc22d41e48697aafb2f2f20b8984bb02a5
+        url: https://files.pythonhosted.org/packages/60/f7/c10d2dd5bf503a1de83bd163467bd323f12af016866c2814743b5b1efe1c/pyqt6_sip-13.11.1-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+        sha256: b68e442efc4275651bf63f2c43713e242924fd948909e31cf8f20d783ca505e9
         only-arches: [aarch64]
 
   - name: python3-PyQt6-Qt6
