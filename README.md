@@ -57,6 +57,11 @@ folder before modifying (disable with `--no-backup`). Run `python3 cli.py --help
 for the full list of options. When installed from a package, the command is
 available simply as `ohmega-cli`.
 
+## Bugs and ideas
+
+Found a bug or have an idea? Use the [form on the website](https://ohmega.is-my.app/#report) (no account needed)
+or [open an issue](https://github.com/Dany161024/Ohmega/issues/new/choose) on GitHub.
+
 ## License
 
-MIT
+GPL-3.0 — see [LICENSE](LICENSE)

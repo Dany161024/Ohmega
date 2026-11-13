@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Report without a GitHub account
+    url: https://ohmega.is-my.app/#report
+    about: A short form on the website — it goes straight to the developer, no account needed.
+  - name: Downloads and install help
+    url: https://ohmega.is-my.app/#download
+    about: Download links for Linux, macOS and Windows, and how to get past Gatekeeper / SmartScreen.

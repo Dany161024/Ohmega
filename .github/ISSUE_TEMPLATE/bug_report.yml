@@ -1,0 +1,58 @@
+name: Bug report
+description: Something doesn't work, crashes or a file comes out wrong
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time! Issues are public, so please don't include personal information.
+        No GitHub account? Use the form at https://ohmega.is-my.app/#report instead.
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Ohmega version
+      description: Shown in About Ohmega, or in the name of the file you downloaded.
+      placeholder: "1.3.1"
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "Ubuntu 24.04 · macOS 14.5 on an M2 · Windows 11 23H2"
+    validations:
+      required: true
+  - type: input
+    id: files
+    attributes:
+      label: Files and target
+      description: Which formats were involved, and which loudness target you picked.
+      placeholder: "FLAC album + a few MP3s, Streaming (−14 LUFS)"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Add the folder …
+        2. Scan, then Normalize
+        3. …
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots or anything else
+      description: Drag images here. The error text from the Gain column (hover over "failed") helps a lot.

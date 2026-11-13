@@ -186,6 +186,26 @@
     details[open] summary::after { content: "–"; }
     details p { color: var(--muted); padding-bottom: 20px; }
 
+    /* bug report */
+    .report { background: var(--surface); border-top: 1px solid var(--line); }
+    .report-card { max-width: 720px; margin-top: 32px; }
+    .report form { display: grid; gap: 16px; }
+    .report .row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
+    .report label { display: grid; gap: 6px; color: var(--muted); font-size: 0.92rem; }
+    .report label small { color: var(--faint); font-size: inherit; }
+    .report .lead { margin-top: 14px; }
+    .report input, .report select { height: 46px; }
+    .report input, .report select, .report textarea { width: 100%; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; font: inherit; font-size: 0.97rem; }
+    .report textarea { min-height: 130px; resize: vertical; }
+    .report input:focus, .report select:focus, .report textarea:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: transparent; }
+    .report .toggle { justify-self: start; }
+    .report .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+    .report .send { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+    .report .send button[disabled] { opacity: 0.6; cursor: wait; }
+    .report .msg.ok { color: var(--ok); }
+    .report .msg.err { color: var(--loud); }
+    @media (max-width: 600px) { .report .row { grid-template-columns: minmax(0, 1fr); } }
+
     footer { border-top: 1px solid var(--line); padding: 40px 0 56px; color: var(--faint); font-size: 0.92rem; }
     footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
     footer a { color: var(--muted); }
@@ -362,12 +382,40 @@
       </div>
     </div>
   </section>
+
+  <section class="report" id="report">
+    <div class="wrap">
+      <p class="kicker">Feedback</p>
+      <h2>Found a bug?</h2>
+      <p class="lead">Or have an idea? It goes straight to the developer — no account needed.</p>
+      <div class="card report-card">
+        <form id="report-form" novalidate>
+          <div class="toggle" role="group" aria-label="Report type">
+            <button type="button" data-typ="bug" aria-pressed="true">Bug</button><button type="button" data-typ="idea" aria-pressed="false">Idea</button>
+          </div>
+          <div class="row">
+            <label>Platform
+              <select name="system"><option value="">Choose…</option><option>Linux</option><option>macOS</option><option>Windows</option></select>
+            </label>
+            <label>Ohmega version<input name="verzia" value="1.3.1" maxlength="40"></label>
+          </div>
+          <label><span id="report-what">What happened?</span>
+            <textarea name="popis" maxlength="5000" placeholder="What you did, what you expected, what happened instead. Which formats?"></textarea>
+          </label>
+          <label><span>Email <small>(optional, only for a reply)</small></span><input name="email" type="email" maxlength="200" autocomplete="email"></label>
+          <div class="hp" aria-hidden="true"><label>Website<input name="web_site" tabindex="-1" autocomplete="off"></label></div>
+          <div class="send"><button class="btn btn-primary" type="submit">Send</button><span class="msg" id="report-msg" role="status"></span></div>
+        </form>
+        <p class="meta">No IP address is stored. Prefer GitHub? <a href="https://github.com/Dany161024/Ohmega/issues/new/choose">Open an issue</a>.</p>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
   <div class="wrap">
     <span>Ohmega is free software under the <a href="https://github.com/Dany161024/Ohmega/blob/main/LICENSE">GPL-3.0</a> · made by <a href="https://github.com/Dany161024">Dany161024</a></span>
-    <span><a href="https://github.com/Dany161024/Ohmega">Source on GitHub</a> · <a href="mailto:loudless.spender000@passinbox.com">Contact</a></span>
+    <span><a href="https://github.com/Dany161024/Ohmega">Source on GitHub</a> · <a href="#report">Report a bug</a> · <a href="mailto:loudless.spender000@passinbox.com">Contact</a></span>
   </div>
 </footer>
 
@@ -443,6 +491,43 @@
     v.play();
   });
   big.addEventListener("close", function () { big.querySelector("video").pause(); if (!hero.controls) hero.play(); });
+
+  // bug report → the developer's home server (no IP addresses stored)
+  var form = document.getElementById("report-form");
+  if (form) {
+    var opened = Date.now(), typ = "bug", msg = document.getElementById("report-msg");
+    var guess = function () {
+      var ua = navigator.userAgent;
+      form.system.value = /Windows/.test(ua) ? "Windows" : /Macintosh/.test(ua) ? "macOS" : /Linux|X11/.test(ua) && !/Android/.test(ua) ? "Linux" : "";
+    };
+    var say = function (text, kind) { msg.textContent = text; msg.className = "msg" + (kind ? " " + kind : ""); };
+    guess();
+    form.querySelectorAll("[data-typ]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        typ = b.dataset.typ;
+        form.querySelectorAll("[data-typ]").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+        document.getElementById("report-what").textContent = typ === "bug" ? "What happened?" : "What would you like Ohmega to do?";
+      });
+    });
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!form.system.value) { say("Please pick a platform.", "err"); return; }
+      if (form.popis.value.trim().length < 10) { say("Please describe it in a few more words.", "err"); return; }
+      var send = form.querySelector("[type=submit]");
+      send.disabled = true;
+      say("Sending…");
+      fetch("/api/report", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({
+        web: "ohmega", typ: typ, system: form.system.value, verzia: form.verzia.value, popis: form.popis.value,
+        email: form.email.value, web_site: form.web_site.value, t: opened }) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok && d.ok, error: d.chyba }; }); })
+        .then(function (res) {
+          if (res.ok) { form.reset(); guess(); say("Thanks! It's on its way.", "ok"); }
+          else say(res.error || "Something went wrong — please try GitHub.", "err");
+        })
+        .catch(function () { say("Could not send — please try GitHub.", "err"); })
+        .then(function () { send.disabled = false; });
+    });
+  }
 
   // copy buttons
   document.querySelectorAll(".copy").forEach(function (b) {
