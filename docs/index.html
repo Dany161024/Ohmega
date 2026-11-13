@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ohmega — every track, equally loud</title>
-  <meta name="description" content="Ohmega measures the real loudness of your music (EBU R128) and writes the fix straight into the audio files. No ReplayGain tags, no player settings. Free and open source for Linux and macOS.">
+  <meta name="description" content="Ohmega measures the real loudness of your music (EBU R128) and writes the fix straight into the audio files. No ReplayGain tags, no player settings. Free and open source for Linux, macOS and Windows.">
   <meta name="theme-color" content="#0f0c0a">
   <link rel="icon" type="image/png" href="icon.png">
   <meta property="og:type" content="website">
@@ -148,22 +148,16 @@
 
     /* download */
     .download { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-    .dl-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 18px; margin-top: 40px; }
+    .dl-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 40px; }
     .card { background: var(--bg); border: 1px solid var(--line); border-radius: 16px; padding: 28px; min-width: 0; }
-    .card.main { border-color: rgba(232, 105, 42, 0.55); box-shadow: 0 0 0 1px rgba(232, 105, 42, 0.15) inset; }
-    .card .tag { display: inline-block; font: 600 0.75rem var(--head); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-hi); margin-bottom: 10px; }
-    .card h3 { font-size: 1.45rem; margin-bottom: 8px; }
+    .card h3 { font-size: 1.45rem; margin-bottom: 6px; }
     .card > p { color: var(--muted); margin-bottom: 20px; }
-    .card ol { margin: 22px 0 0; padding-left: 1.3em; color: var(--muted); display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
-    .card ol li { min-width: 0; }
-    .card ol li::marker { color: var(--accent-hi); font-family: var(--head); font-weight: 700; }
-    .side { display: grid; gap: 18px; align-content: start; }
-    .side .card { padding: 22px 24px; }
-    .side .card h3 { font-size: 1.15rem; }
-    .side .card > p { margin-bottom: 14px; font-size: 0.95rem; }
-    .soon { display: inline-block; font: 600 0.78rem var(--head); color: var(--faint); border: 1px dashed var(--faint); border-radius: 999px; padding: 4px 12px; }
+    .dl-grid .btn { width: 100%; }
+    .dl-grid details { background: none; border: 0; padding: 0; margin-top: 14px; }
+    .dl-grid summary { font: 600 0.88rem var(--head); color: var(--faint); padding: 4px 0; justify-content: flex-start; }
+    .dl-grid summary::after { font-size: 1rem; }
     .meta { color: var(--faint); font-size: 0.85rem; margin-top: 14px; overflow-wrap: anywhere; }
-    .meta code { color: var(--muted); }
+    .meta strong { color: var(--muted); }
     @media (max-width: 900px) { .dl-grid { grid-template-columns: minmax(0, 1fr); } }
 
     /* code */
@@ -221,7 +215,7 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="kicker">Free &amp; open source · Linux &amp; macOS</p>
+        <p class="kicker">Free &amp; open source · Linux, macOS &amp; Windows</p>
         <h1>Every track,<br><span>equally loud.</span></h1>
       </div>
       <div>
@@ -233,7 +227,7 @@
           </a>
           <a class="btn btn-ghost" href="#how">How it works</a>
         </div>
-        <p class="fine">Version 1.3.1 · Linux &amp; macOS · Windows coming soon</p>
+        <p class="fine">Version 1.3.1 · Linux, macOS &amp; Windows</p>
       </div>
       <figure class="player">
         <video id="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/demo-poster.jpg" width="1600" height="1000" aria-label="Ohmega demo: seven tracks between −6.7 and −27 LUFS are scanned and normalized to −14 LUFS">
@@ -289,7 +283,7 @@
         <div class="feature"><h3>Lossless stays lossless</h3><p>FLAC, WAV, AIFF, APE and WavPack are re-encoded without any quality loss.</p></div>
         <div class="feature"><h3>Safe by default</h3><p>Originals are copied to an “Ohmega Backup” folder first. One checkbox if you don't want it.</p></div>
         <div class="feature"><h3>Batch &amp; profiles</h3><p>Hundreds of files and whole folder trees at once. Save your favourite settings as a profile.</p></div>
-        <div class="feature"><h3>Native on Linux and Mac</h3><p>Qt 6 on any Linux desktop, SwiftUI on macOS — same engine, same results. A command-line tool comes with it.</p></div>
+        <div class="feature"><h3>Native everywhere</h3><p>Qt 6 on any Linux desktop, SwiftUI on macOS, a native app on Windows — same engine, same results. A command-line tool comes with it.</p></div>
       </div>
     </div>
   </section>
@@ -299,43 +293,30 @@
       <p class="kicker">Download</p>
       <h2>Get Ohmega 1.3.1</h2>
       <div class="dl-grid">
-        <div class="card main">
-          <span class="tag">Linux · recommended</span>
-          <h3>Flatpak bundle</h3>
-          <p>One file with everything inside. Works on Ubuntu, Mint, Fedora, Debian, Arch and any other distro with Flatpak.</p>
-          <a class="btn btn-primary" href="https://ohmega.is-my.app/download/ohmega-1.3.1.flatpak" download>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>
-            ohmega-1.3.1.flatpak · 61 MB
-          </a>
-          <ol>
-            <li>Open the downloaded file — your software center (GNOME Software, Discover) installs it. Or in a terminal:
-              <div class="code"><code>flatpak install --user ohmega-1.3.1.flatpak</code><button class="copy" type="button" data-copy="flatpak install --user ohmega-1.3.1.flatpak">Copy</button></div>
-            </li>
-            <li>Start <strong>Ohmega</strong> from your app menu, or:
-              <div class="code"><code>flatpak run io.github.Daniel_v8.Ohmega</code><button class="copy" type="button" data-copy="flatpak run io.github.Daniel_v8.Ohmega">Copy</button></div>
-            </li>
-          </ol>
-          <p class="meta">Needs <a href="https://flatpak.org/setup/">Flatpak</a> — the KDE 6.10 runtime is fetched from Flathub automatically. SHA-256 <code>d1706e38…631f59445</code> · <a href="https://ohmega.is-my.app/download/SHA256SUMS.txt">checksums</a></p>
+        <div class="card">
+          <h3>Linux</h3>
+          <p>Flatpak · any distro</p>
+          <a class="btn btn-primary" href="https://ohmega.is-my.app/download/ohmega-1.3.1.flatpak" download>Download · 61 MB</a>
+          <details>
+            <summary>Install from a terminal</summary>
+            <div class="code"><code>flatpak install --user ohmega-1.3.1.flatpak</code><button class="copy" type="button" data-copy="flatpak install --user ohmega-1.3.1.flatpak">Copy</button></div>
+            <div class="code"><code>flatpak run io.github.Daniel_v8.Ohmega</code><button class="copy" type="button" data-copy="flatpak run io.github.Daniel_v8.Ohmega">Copy</button></div>
+          </details>
         </div>
-        <div class="side">
-          <div class="card">
-            <h3>Source (.zip)</h3>
-            <p>Plain Python — needs Python 3.10+, PyQt6 and ffmpeg. Run <code>python3 main.py</code>, or <code>python3 cli.py</code> for the command line.</p>
-            <a class="btn btn-ghost" href="https://ohmega.is-my.app/download/ohmega-1.3.1.zip" download>ohmega-1.3.1.zip · 188 kB</a>
-          </div>
-          <div class="card">
-            <h3>macOS</h3>
-            <p>Native app for Intel and Apple Silicon, macOS 13 or newer. FFmpeg is included.</p>
-            <a class="btn btn-ghost" href="https://ohmega.is-my.app/download/Ohmega-1.3.1-macOS.dmg" download>Ohmega-1.3.1-macOS.dmg · 34 MB</a>
-            <p class="meta">Not notarized by Apple: the first time, open <strong>System Settings → Privacy &amp; Security</strong> and click <strong>Open Anyway</strong>.</p>
-          </div>
-          <div class="card">
-            <h3>Windows</h3>
-            <p>A native installer is planned next.</p>
-            <span class="soon">Coming soon</span>
-          </div>
+        <div class="card">
+          <h3>macOS</h3>
+          <p>Intel &amp; Apple Silicon · macOS 13+</p>
+          <a class="btn btn-primary" href="https://ohmega.is-my.app/download/Ohmega-1.3.1-macOS.dmg" download>Download · 34 MB</a>
+          <p class="meta">Blocked on first launch? Settings → Privacy &amp; Security → <strong>Open Anyway</strong>.</p>
+        </div>
+        <div class="card">
+          <h3>Windows</h3>
+          <p>Windows 10 &amp; 11 · no admin needed</p>
+          <a class="btn btn-primary" href="https://ohmega.is-my.app/download/Ohmega-1.3.1-Windows-Setup.exe" download>Download · 29 MB</a>
+          <p class="meta">SmartScreen warning? <strong>More info → Run anyway</strong>.</p>
         </div>
       </div>
+      <p class="note">Prefer Python? <a href="https://ohmega.is-my.app/download/ohmega-1.3.1.zip" download>Source .zip</a> (188 kB) · <a href="https://ohmega.is-my.app/download/SHA256SUMS.txt">SHA-256 checksums</a></p>
     </div>
   </section>
 
